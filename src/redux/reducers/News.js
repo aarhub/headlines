@@ -1,23 +1,28 @@
-const types = {
-    FETCH_NEWS: 'FETCH_NEWS',
-    FETCH_NEWS_DOING: 'FETCH_NEWS_DOING',
-    FETCH_NEWS_DONE: 'FETCH_NEWS_DONE'
-}
+import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../actions/News';
 
 const initalState = {
     isFetching: false,
     data: {}
 }
 
-export default function News(state = initalState, action) {
+export default function fetchNews(state = initalState, action) {
     state = state || {};
 
     switch (action.type) {
-        case types.FETCH_NEWS:
+        case FETCH_NEWS_START:
+            return Object.assign({}, state, {
+                isFetching: true,
+            })
+        case FETCH_NEWS_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
-                data: action.payload
-            });
+                data: action.data
+            })
+        case FETCH_NEWS_FAIL:
+            return Object.assign({}, state, {
+                isFetching: false,
+                msg: action.msg
+            })
         default:
             return {
                 ...state
