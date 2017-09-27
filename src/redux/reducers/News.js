@@ -2,7 +2,7 @@ import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../action
 
 const initalState = {
     isFetching: false,
-    data: {}
+    data: null
 }
 
 export default function fetchNews(state = initalState, action) {
@@ -24,8 +24,6 @@ export default function fetchNews(state = initalState, action) {
                 msg: action.msg
             })
         default:
-            return {
-                ...state
-            }
+            return state
     }
 }

@@ -5,31 +5,33 @@ import { fetchNews } from '../../redux/actions/News';
 import { API_BBC_NEWS } from '../../config/Constants'
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
+    renderList(data) {
+        var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 
-        this.state = {
-            isFetching: false,
-            data: null,
-            msg: null
-        }
+        return (
+            <ListView
+                dataSource={ds.cloneWithRows(data)}
+                renderRow={(item) => {
+                    return (
+                        <Text>{item.title}</Text>
+                    )
+                }}>
+            </ListView>
+        )
     }
 
     render() {
-        const { isFetching, data } = this.state;
+        const { isFetching, data } = this.props;
 
         if (data !== null) {
             let d = data;
         }
+
         return (
             <View style={styles.container}>
                 {isFetching && <Text>Home Page</Text>}
 
-                {!isFetching && data !== null && data.articles.length > 0 &&
-                    <ListView
-                        dataSource={data}>
-                    </ListView>
-                }
+                {!isFetching && data !== null && data.articles && this.renderList(data.articles)}
 
                 {!isFetching && data === null &&
                     <Text>
@@ -46,11 +48,13 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
+    const newState = {
         isFetching: state.News.isFetching,
         data: state.News.data,
         msg: state.News.msg || null
     };
+
+    return newState;
 }
 
 export default connect(mapStateToProps)(Home);

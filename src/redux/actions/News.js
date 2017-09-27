@@ -26,11 +26,8 @@ export function fetchNews(url) {
     return dispatch => {
         dispatch(fetchNewsStart);
 
-        fetch(url)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => dispatch(fetchNewsSuccess(data)))
-            .catch(err => dispatch(fetchNewsFail(err)));
+        fetch(url).then(response => {
+            return response.json();
+        }).then(data => dispatch(fetchNewsSuccess(data))).catch(err => dispatch(fetchNewsFail(err)));
     }
 }
