@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ListView } from 'react-native';
+import { View, StyleSheet, Text, ListView, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchNews } from '../../redux/actions/News';
 import { API_BBC_NEWS } from '../../config/Constants'
 
 class Home extends Component {
+    renderRow = (item) => {
+        return (
+            <TouchableOpacity onPress={() => this.goDetail(item)}>
+                <View>
+                    <View style={styles.row}>
+                        <Image style={styles.thumb} source={{ uri: item.urlToImage }} />
+                        <Text style={{ flex: 1, fontSize: 16, color: 'blue' }}>
+                            {item.title}
+                        </Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
     renderList(data) {
         var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 
         return (
             <ListView
                 dataSource={ds.cloneWithRows(data)}
-                renderRow={(item) => {
-                    return (
-                        <Text>{item.title}</Text>
-                    )
-                }}>
+                renderRow={(item) => { return this.renderRow(item); }}>
             </ListView>
         )
+    }
+
+    goDetail(item) {
+        //this.props.navigator.push(item);
     }
 
     render() {
@@ -62,8 +77,17 @@ export default connect(mapStateToProps)(Home);
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'silver',
-        flex: 1,
+    },
+    row: {
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
-    }
+        padding: 10,
+        margin: 3,
+        borderColor: 'silver',
+        backgroundColor: '#F6F6F6',
+    },
+    thumb: {
+        width: 50,
+        height: 50,
+    },
 }) 

@@ -16,8 +16,6 @@ export default class TabBar extends Component {
         normalColor: '#a9a9a9'
     }
 
-
-
     constructor(props) {
         super(props);
 
