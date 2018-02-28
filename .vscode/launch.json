@@ -18,6 +18,7 @@
             "platform": "ios",
             "target": "iPhone 6",
             "sourceMaps": true,
+            "trace": "verbose",            
             "outDir": "${workspaceRoot}/.vscode/.react"
         },
         {

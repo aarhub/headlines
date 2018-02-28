@@ -8,13 +8,21 @@ class Home extends Component {
     renderRow = (item) => {
         return (
             <TouchableOpacity onPress={() => this.goDetail(item)}>
-                <View>
-                    <View style={styles.row}>
+                <View style={styles.item}>
+                    <View style={styles.sum}>
                         <Image style={styles.thumb} source={{ uri: item.urlToImage }} />
-                        <Text style={{ flex: 1, fontSize: 16, color: 'blue' }}>
-                            {item.title}
-                        </Text>
+                        <View style={styles.title}>
+                            <Text style={{ flex: 1, fontSize: 16, color: 'blue' }}>
+                                {item.title}
+                            </Text>
+                            <Text style={{ flex: 1, fontSize: 12, color: '#000000' }}>
+                                {item.author}
+                            </Text>
+                        </View>
                     </View>
+                    <Text style={styles.description}>
+                        {item.description}
+                    </Text>
                 </View>
             </TouchableOpacity>
         )
@@ -32,7 +40,7 @@ class Home extends Component {
     }
 
     goDetail(item) {
-        //this.props.navigator.push(item);
+        this.props.onShowDetail(item);
     }
 
     render() {
@@ -44,7 +52,7 @@ class Home extends Component {
 
         return (
             <View style={styles.container}>
-                {isFetching && <Text>Home Page</Text>}
+                {isFetching && <Text>Loading News</Text>}
 
                 {!isFetching && data !== null && data.articles && this.renderList(data.articles)}
 
@@ -77,17 +85,32 @@ export default connect(mapStateToProps)(Home);
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'silver',
+        flexDirection: 'column',
+        alignItems: 'center'
     },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        padding: 10,
-        margin: 3,
+    item: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         borderColor: 'silver',
         backgroundColor: '#F6F6F6',
+        padding: 10,
+        margin: 3,
+        marginLeft: 5,
+        marginRight: 5
+    },
+    sum: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        flex: 0.3
     },
     thumb: {
         width: 50,
         height: 50,
     },
+    title: {
+        marginLeft: 6
+    },
+    description: {
+        flex: .7
+    }
 }) 

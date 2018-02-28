@@ -27,6 +27,7 @@ export default class TabBar extends Component {
 
     componentWillMount() {
         const { selectedColor, normalColor } = this.props;
+        
         Icon.getImageSource('md-notifications', 50, normalColor).then(source => this.setState({ notificationNormal: source }));
         Icon.getImageSource('md-notifications', 50, selectedColor).then((source) => this.setState({ notificationSelected: source }));
         Icon.getImageSource('md-home', 50, normalColor).then((source) => this.setState({ homeNormal: source }));
@@ -55,7 +56,11 @@ export default class TabBar extends Component {
                     renderIcon={() => <Image style={styles.tab} source={this.state.homeNormal} />}
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.homeSelected} />}
                     onPress={() => this.setState({ selectedTab: 'home' })}>
-                    {<Home />}
+                    {<Home onShowDetail={(item) => {
+                        console.log(item);
+                        const {na}
+                        this.props.navigator.navigate('Detail', { detail: item });
+                    }}/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}

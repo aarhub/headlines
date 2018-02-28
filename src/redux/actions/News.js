@@ -24,7 +24,7 @@ function fetchNewsFail(msg) {
 
 export function fetchNews(url) {
     return dispatch => {
-        dispatch(fetchNewsStart);
+        dispatch(fetchNewsStart());
 
         fetch(url).then(response => {
             return response.json();
