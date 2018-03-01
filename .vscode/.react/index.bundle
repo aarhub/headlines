@@ -51630,8 +51630,6 @@ var _reactNativeTabNavigator2 = _interopRequireDefault(_reactNativeTabNavigator)
 
 var _px2dp = require(549             ); // 549 = ../utils/px2dp
 
-var _px2dp2 = _interopRequireDefault(_px2dp);
-
 var _Home = require(550           ); // 550 = ./pages/Home
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -51644,9 +51642,9 @@ var _Discover = require(591               ); // 591 = ./pages/Discover
 
 var _Discover2 = _interopRequireDefault(_Discover);
 
-var _Message = require(592              ); // 592 = ./pages/Message
+var _News = require(703           ); // 703 = ./pages/News
 
-var _Message2 = _interopRequireDefault(_Message);
+var _News2 = _interopRequireDefault(_News);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51684,8 +51682,8 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
         var _this = _possibleConstructorReturn(this, (TabBar.__proto__ || Object.getPrototypeOf(TabBar)).call(this, props));
 
         _this.state = {
-            selectedTab: 'home',
-            tabName: ['Home', 'Discover', 'Message', 'My']
+            selectedTab: 'my',
+            tabName: ['Home', 'Discover', 'News', 'My']
         };
         return _this;
     }
@@ -51775,7 +51773,6 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
                     },
                     _react3.default.createElement(_Home2.default, { onShowDetail: function onShowDetail(item) {
                             console.log(item);
-                            _this3.props.navigator.navigate('Detail', { detail: item });
                         }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 59
@@ -51786,43 +51783,8 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
                     _reactNativeTabNavigator2.default.Item,
                     {
                         tabStyle: styles.tabStyle,
-                        title: tabName[1],
-                        selected: this.state.selectedTab === 'compass',
-                        selectedTitleStyle: { color: selectedColor },
-                        renderIcon: function renderIcon() {
-                            return _react3.default.createElement(_reactNative.Image, { style: styles.tab, source: _this3.state.compassNormal, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 69
-                                }
-                            });
-                        },
-                        renderSelectedIcon: function renderSelectedIcon() {
-                            return _react3.default.createElement(_reactNative.Image, { style: styles.tab, source: _this3.state.compassSelected, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 70
-                                }
-                            });
-                        },
-                        onPress: function onPress() {
-                            return _this3.setState({ selectedTab: 'compass' });
-                        }, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 64
-                        }
-                    },
-                    _react3.default.createElement(_Discover2.default, {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 72
-                        }
-                    })
-                ),
-                _react3.default.createElement(
-                    _reactNativeTabNavigator2.default.Item,
-                    {
-                        tabStyle: styles.tabStyle,
                         title: tabName[2],
-                        selected: this.state.selectedTab === 'notification',
+                        selected: this.state.selectedTab === 'news',
                         selectedTitleStyle: { color: selectedColor },
                         renderIcon: function renderIcon() {
                             return _react3.default.createElement(_reactNative.Image, { style: styles.tab, source: _this3.state.notificationNormal, __source: {
@@ -51839,13 +51801,13 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
                             });
                         },
                         onPress: function onPress() {
-                            return _this3.setState({ selectedTab: 'notification' });
+                            return _this3.setState({ selectedTab: 'news' });
                         }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 74
                         }
                     },
-                    _react3.default.createElement(_Message2.default, { navigator: this.props.navigator, __source: {
+                    _react3.default.createElement(_News2.default, { navigator: this.props.navigator, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 82
                         }
@@ -51856,7 +51818,7 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
                     {
                         tabStyle: styles.tabStyle,
                         title: tabName[3],
-                        selected: this.state.selectedTab === 'me',
+                        selected: this.state.selectedTab === 'my',
                         selectedTitleStyle: { color: selectedColor },
                         renderIcon: function renderIcon() {
                             return _react3.default.createElement(_reactNative.Image, { style: styles.tab, source: _this3.state.meNormal, __source: {
@@ -51873,7 +51835,7 @@ var TabBar = _wrapComponent('TabBar')((_temp = _class = function (_Component) {
                             });
                         },
                         onPress: function onPress() {
-                            return _this3.setState({ selectedTab: 'me' });
+                            return _this3.setState({ selectedTab: 'my' });
                         }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 84
@@ -51906,17 +51868,17 @@ var styles = _reactNative.StyleSheet.create({
         backgroundColor: '#F5FCFF'
     },
     tabbar: {
-        height: (0, _px2dp2.default)(49),
+        height: (0, _px2dp.px2dp)(49),
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff'
     },
     tabStyle: {
-        padding: (0, _px2dp2.default)(6)
+        padding: (0, _px2dp.px2dp)(6)
     },
     tab: {
-        width: (0, _px2dp2.default)(20),
-        height: (0, _px2dp2.default)(20)
+        width: (0, _px2dp.px2dp)(20),
+        height: (0, _px2dp.px2dp)(20)
     }
 });
 }, 489, null, "headlines/src/components/TabBar.js");
@@ -59909,15 +59871,21 @@ exports.default = TabNavigatorItem;
 __d(/* headlines/src/utils/px2dp.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = px2dp;
+exports.px2dp = px2dp;
+exports.getWidth = getWidth;
 
 var _reactNative = require(176           ); // 176 = react-native
 
 var deviceHeight = _reactNative.Dimensions.get('window').height;
+var deviceWidth = _reactNative.Dimensions.get('window').width;
 var uiHeight = 640;
 
 function px2dp(px) {
     return px * deviceHeight / uiHeight;
+}
+
+function getWidth() {
+    return deviceWidth;
 }
 }, 549, null, "headlines/src/utils/px2dp.js");
 __d(/* headlines/src/components/pages/Home.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
@@ -60098,7 +60066,7 @@ var Home = _wrapComponent('Home')(function (_Component) {
                         lineNumber: 54
                     }
                 },
-                isFetching && _react3.default.createElement(
+                _react3.default.createElement(
                     _reactNative.Text,
                     {
                         __source: {
@@ -60106,18 +60074,7 @@ var Home = _wrapComponent('Home')(function (_Component) {
                             lineNumber: 55
                         }
                     },
-                    'Loading News'
-                ),
-                !isFetching && data !== null && data.articles && this.renderList(data.articles),
-                !isFetching && data === null && _react3.default.createElement(
-                    _reactNative.Text,
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 60
-                        }
-                    },
-                    'No News'
+                    'Home Page'
                 )
             );
         }
@@ -60148,6 +60105,11 @@ var styles = _reactNative.StyleSheet.create({
     container: {
         backgroundColor: 'silver',
         flexDirection: 'column',
+        alignItems: 'center'
+    },
+    empty: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     item: {
@@ -62035,6 +61997,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _reactNative = require(176           ); // 176 = react-native
 
+var _px2dp = require(549                ); // 549 = ../../utils/px2dp
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62066,9 +62030,19 @@ var My = _wrapComponent('My')(function (_Component) {
     _inherits(My, _Component);
 
     function My() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, My);
 
-        return _possibleConstructorReturn(this, (My.__proto__ || Object.getPrototypeOf(My)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = My.__proto__ || Object.getPrototypeOf(My)).call.apply(_ref, [this].concat(args))), _this), _this.constructSources = function () {
+            var sources = [{ name: 'BBC News', imgUrl: '' }, { name: 'BBC Sport', imgUrl: '' }, { name: 'ABC News', imgUrl: imgUrl }, { name: 'CNN', imgUrl: '' }];
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(My, [{
@@ -62078,18 +62052,103 @@ var My = _wrapComponent('My')(function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 7
+                        lineNumber: 9
                     }
                 },
                 _react3.default.createElement(
-                    _reactNative.Text,
-                    {
-                        __source: {
+                    _reactNative.View,
+                    { style: styles.profile, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 8
+                            lineNumber: 10
                         }
                     },
-                    'My Page'
+                    _react3.default.createElement(_reactNative.Image, { style: styles.thumb, source: { uri: 'https://avatars0.githubusercontent.com/u/3346188?s=400&u=3bdc5b7acec5a8e27a78e1c0f9ed3173c2be9164&v=4' }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 11
+                        }
+                    }),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: styles.title, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 12
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            { style: { flex: 1, fontSize: 20, color: '#FFFFFF', marginTop: 3 }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 13
+                                }
+                            },
+                            'F.Achilles'
+                        )
+                    )
+                ),
+                _react3.default.createElement(
+                    _reactNative.View,
+                    { style: styles.settings, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 19
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: styles.item, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 20
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: styles.social, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 21
+                                }
+                            },
+                            _react3.default.createElement(_reactNative.Image, { style: styles.social, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 22
+                                }
+                            }),
+                            _react3.default.createElement(_reactNative.Image, {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 23
+                                }
+                            }),
+                            _react3.default.createElement(_reactNative.Image, {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 24
+                                }
+                            })
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: styles.item, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 27
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 28
+                                }
+                            },
+                            'Auto Update'
+                        ),
+                        _react3.default.createElement(_reactNative.Switch, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 29
+                            }
+                        })
+                    )
                 )
             );
         }
@@ -62103,9 +62162,46 @@ exports.default = My;
 
 var styles = _reactNative.StyleSheet.create({
     container: {
-        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        backgroundColor: 'silver',
+        height: '100%'
+    },
+    profile: {
+        width: '100%',
+        height: (0, _px2dp.getWidth)() / 2,
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 5,
+        backgroundColor: 'rgb(0,152,249)'
+    },
+    thumb: {
+        width: 80,
+        height: 80,
+        marginTop: (0, _px2dp.getWidth)() / 4,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: '#FFFFFF'
+    },
+    title: {},
+    settings: {
+        width: (0, _px2dp.getWidth)() - 40,
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: -20
+    },
+    item: {
+        backgroundColor: '#F6F6F6',
+        height: 30,
+        borderRadius: 5,
+        margin: 5,
+        flexDirection: 'row',
+        justifyContent: 'flex-start'
+    },
+    social: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 });
 }, 590, null, "headlines/src/components/pages/My.js");
@@ -62201,7 +62297,7 @@ var styles = _reactNative.StyleSheet.create({
     }
 });
 }, 591, null, "headlines/src/components/pages/Discover.js");
-__d(/* headlines/src/components/pages/Message.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+__d(/* headlines/src/components/pages/News.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
@@ -62213,11 +62309,17 @@ var _index = require(22                                                        )
 
 var _index2 = _interopRequireDefault(_index);
 
-var _jsxFileName = '/Volumes/SD/Projects/react/headlines/src/components/pages/Message.js';
+var _jsxFileName = '/Volumes/SD/Projects/react/headlines/src/components/pages/News.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _reactNative = require(176           ); // 176 = react-native
+
+var _reactRedux = require(551          ); // 551 = react-redux
+
+var _News = require(588                       ); // 588 = ../../redux/actions/News
+
+var _Constants = require(589                     ); // 589 = ../../config/Constants
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62228,13 +62330,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _components = {
-    Message: {
-        displayName: 'Message'
+    News: {
+        displayName: 'News'
     }
 };
 
 var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: '/Volumes/SD/Projects/react/headlines/src/components/pages/Message.js',
+    filename: '/Volumes/SD/Projects/react/headlines/src/components/pages/News.js',
     components: _components,
     locals: [module],
     imports: [_react3.default]
@@ -62246,53 +62348,215 @@ function _wrapComponent(id) {
     };
 }
 
-var Message = _wrapComponent('Message')(function (_Component) {
-    _inherits(Message, _Component);
+var News = _wrapComponent('News')(function (_Component) {
+    _inherits(News, _Component);
 
-    function Message() {
-        _classCallCheck(this, Message);
+    function News() {
+        var _ref;
 
-        return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, News);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = News.__proto__ || Object.getPrototypeOf(News)).call.apply(_ref, [this].concat(args))), _this), _this.renderRow = function (item) {
+            return _react3.default.createElement(
+                _reactNative.TouchableOpacity,
+                { onPress: function onPress() {
+                        return _this.goDetail(item);
+                    }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 10
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.View,
+                    { style: styles.item, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 11
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: styles.sum, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 12
+                            }
+                        },
+                        _react3.default.createElement(_reactNative.Image, { style: styles.thumb, source: { uri: item.urlToImage }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 13
+                            }
+                        }),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: styles.title, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 14
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.Text,
+                                { style: { flex: 1, fontSize: 16, color: 'blue' }, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 15
+                                    }
+                                },
+                                item.title
+                            ),
+                            _react3.default.createElement(
+                                _reactNative.Text,
+                                { style: { flex: 1, fontSize: 12, color: '#000000' }, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 18
+                                    }
+                                },
+                                item.author
+                            )
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.Text,
+                        { style: styles.description, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 23
+                            }
+                        },
+                        item.description
+                    )
+                )
+            );
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    _createClass(Message, [{
+    _createClass(News, [{
+        key: 'renderList',
+        value: function renderList(data) {
+            var _this2 = this;
+
+            var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                    return r1 != r2;
+                } });
+
+            return _react3.default.createElement(_reactNative.ListView, {
+                dataSource: ds.cloneWithRows(data),
+                renderRow: function renderRow(item) {
+                    return _this2.renderRow(item);
+                }, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 35
+                }
+            });
+        }
+    }, {
+        key: 'goDetail',
+        value: function goDetail(item) {}
+    }, {
         key: 'render',
         value: function render() {
+            var _props = this.props,
+                isFetching = _props.isFetching,
+                data = _props.data;
+
+
+            if (data !== null) {
+                var d = data;
+            }
+
             return _react3.default.createElement(
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 7
+                        lineNumber: 54
                     }
                 },
-                _react3.default.createElement(
+                isFetching && _react3.default.createElement(
                     _reactNative.Text,
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 8
+                            lineNumber: 55
                         }
                     },
-                    'Message Page'
+                    'Loading News'
+                ),
+                !isFetching && data !== null && data.articles && this.renderList(data.articles),
+                !isFetching && data === null && _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 59
+                        }
+                    },
+                    'No News'
                 )
             );
         }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.props.dispatch((0, _News.fetchNews)(_Constants.API_BBC_NEWS));
+        }
     }]);
 
-    return Message;
+    return News;
 }(_react2.Component));
 
-exports.default = Message;
+function mapStateToProps(state) {
+    var newState = {
+        isFetching: state.News.isFetching,
+        data: state.News.data,
+        msg: state.News.msg || null
+    };
+
+    return newState;
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(News);
 
 
 var styles = _reactNative.StyleSheet.create({
     container: {
+        backgroundColor: 'silver',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    empty: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    item: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        borderColor: 'silver',
+        backgroundColor: '#F6F6F6',
+        padding: 10,
+        margin: 3,
+        marginLeft: 5,
+        marginRight: 5
+    },
+    sum: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        flex: 0.3
+    },
+    thumb: {
+        width: 50,
+        height: 50
+    },
+    title: {
+        marginLeft: 6
+    },
+    description: {
+        flex: .7
     }
 });
-}, 592, null, "headlines/src/components/pages/Message.js");
+}, 703, null, "headlines/src/components/pages/News.js");
 __d(/* headlines/src/components/pages/Detail.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });

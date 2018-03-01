@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchNews } from '../../redux/actions/News';
 import { API_BBC_NEWS } from '../../config/Constants'
 
-class Home extends Component {
+class News extends Component {
     renderRow = (item) => {
         return (
             <TouchableOpacity onPress={() => this.goDetail(item)}>
@@ -40,7 +40,7 @@ class Home extends Component {
     }
 
     goDetail(item) {
-        this.props.onShowDetail(item);
+        //this.props.onShowDetail(item);
     }
 
     render() {
@@ -52,7 +52,11 @@ class Home extends Component {
 
         return (
             <View style={styles.container}>
-                <Text>{`Home Page`}</Text>
+                {isFetching && <Text>Loading News</Text>}
+
+                {!isFetching && data !== null && data.articles && this.renderList(data.articles)}
+
+                {!isFetching && data === null && <Text>No News</Text>}
             </View>
         )
     }
@@ -72,7 +76,7 @@ function mapStateToProps(state) {
     return newState;
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(News);
 
 const styles = StyleSheet.create({
     container: {

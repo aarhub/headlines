@@ -3,12 +3,12 @@ import { View, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TabNavigator from 'react-native-tab-navigator';
 
-import px2dp from '../utils/px2dp';
+import { px2dp } from '../utils/px2dp';
 
 import Home from './pages/Home';
 import My from './pages/My';
 import Discover from './pages/Discover';
-import Message from './pages/Message';
+import News from './pages/News';
 
 export default class TabBar extends Component {
     static defaultProps = {
@@ -20,14 +20,14 @@ export default class TabBar extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'home',
-            tabName: ['Home', 'Discover', 'Message', 'My']
+            selectedTab: 'my',
+            tabName: ['Home', 'Discover', 'News', 'My']
         }
     }
 
     componentWillMount() {
         const { selectedColor, normalColor } = this.props;
-        
+
         Icon.getImageSource('md-notifications', 50, normalColor).then(source => this.setState({ notificationNormal: source }));
         Icon.getImageSource('md-notifications', 50, selectedColor).then((source) => this.setState({ notificationSelected: source }));
         Icon.getImageSource('md-home', 50, normalColor).then((source) => this.setState({ homeNormal: source }));
@@ -58,11 +58,10 @@ export default class TabBar extends Component {
                     onPress={() => this.setState({ selectedTab: 'home' })}>
                     {<Home onShowDetail={(item) => {
                         console.log(item);
-                        const {na}
-                        this.props.navigator.navigate('Detail', { detail: item });
-                    }}/>}
+                        //this.props.navigator.navigate('Detail', { detail: item });
+                    }} />}
                 </TabNavigator.Item>
-                <TabNavigator.Item
+                {/* <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[1]}
                     selected={this.state.selectedTab === 'compass'}
@@ -71,25 +70,25 @@ export default class TabBar extends Component {
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.compassSelected} />}
                     onPress={() => this.setState({ selectedTab: 'compass' })}>
                     {<Discover />}
-                </TabNavigator.Item>
+                </TabNavigator.Item> */}
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[2]}
-                    selected={this.state.selectedTab === 'notification'}
+                    selected={this.state.selectedTab === 'news'}
                     selectedTitleStyle={{ color: selectedColor }}
                     renderIcon={() => <Image style={styles.tab} source={this.state.notificationNormal} />}
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.notificationSelected} />}
-                    onPress={() => this.setState({ selectedTab: 'notification' })}>
-                    {<Message navigator={this.props.navigator} />}
+                    onPress={() => this.setState({ selectedTab: 'news' })}>
+                    {<News navigator={this.props.navigator} />}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[3]}
-                    selected={this.state.selectedTab === 'me'}
+                    selected={this.state.selectedTab === 'my'}
                     selectedTitleStyle={{ color: selectedColor }}
                     renderIcon={() => <Image style={styles.tab} source={this.state.meNormal} />}
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.meSelected} />}
-                    onPress={() => this.setState({ selectedTab: 'me' })}>
+                    onPress={() => this.setState({ selectedTab: 'my' })}>
                     {<My navigator={this.props.navigator} />}
                 </TabNavigator.Item>
             </TabNavigator>
