@@ -12,10 +12,10 @@ class News extends Component {
                     <View style={styles.sum}>
                         <Image style={styles.thumb} source={{ uri: item.urlToImage }} />
                         <View style={styles.title}>
-                            <Text style={{ flex: 1, fontSize: 16, color: 'blue' }}>
+                            <Text style={{ fontSize: 16, color: 'blue' }}>
                                 {item.title}
                             </Text>
-                            <Text style={{ flex: 1, fontSize: 12, color: '#000000' }}>
+                            <Text style={{ fontSize: 12, color: '#000000' }}>
                                 {item.author}
                             </Text>
                         </View>
@@ -84,25 +84,18 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center'
     },
-    empty: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     item: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         borderColor: 'silver',
         backgroundColor: '#F6F6F6',
-        padding: 10,
-        margin: 3,
-        marginLeft: 5,
-        marginRight: 5
+        margin: 3
     },
     sum: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        flex: 0.3
+        flex: 0.3,
+        margin: 3
     },
     thumb: {
         width: 50,
@@ -112,6 +105,7 @@ const styles = StyleSheet.create({
         marginLeft: 6
     },
     description: {
-        flex: .7
+        flex: .7,
+        margin: 3
     }
 }) 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class Detail extends React.Component {
     render() {
@@ -12,5 +12,5 @@ export default class Detail extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    
+
 })

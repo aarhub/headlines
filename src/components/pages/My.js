@@ -28,19 +28,26 @@ export default class My extends Component {
                         <Text>{`Auto Update`}</Text>
                         <Switch />
                     </View>
+                    <View style={styles.sources}>
+                        {this.constructSources()}
+                    </View>
                 </View>
             </View>
         )
     }
 
     constructSources = () => {
-        const sources = [
-            { name: 'BBC News', imgUrl: '' }, { name: 'BBC Sport', imgUrl: '' }, { name: 'ABC News', imgUrl },
-            { name: 'CNN', imgUrl: '', name: 'Google News', imgUrl: '' }];
+        const shit = [
+            { name: 'Github', imgUrl: '' }, { name: 'Twitter', imgUrl: '' }, { name: 'Facebook', imgUrl: '' },
+            { name: 'Google', imgUrl: '' }];
 
-            sources.map((value,index)=>{
-                
-            })
+        return shit.map((item, index) => {
+            return (
+                <View key={item.name} style={{ width: 80, height: 100, backgroundColor: 'yellow', marginBottom: 5 }}>
+                    <Text>{item.name}</Text>
+                </View>
+            )
+        })
     }
 }
 
@@ -83,6 +90,15 @@ const styles = StyleSheet.create({
         margin: 5,
         flexDirection: 'row',
         justifyContent: 'flex-start',
+    },
+    sources: {
+        backgroundColor: '#F6F6F6',
+        borderRadius: 5,
+        padding: 5,
+        margin: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap'
     },
     social: {
         flexDirection: 'row',
