@@ -5,10 +5,10 @@ import TabNavigator from 'react-native-tab-navigator';
 
 import { px2dp } from '../utils/px2dp';
 
-import Home from './pages/Home';
-import My from './pages/My';
-import Discover from './pages/Discover';
-import News from './pages/News';
+import Home from './Home';
+import My from './My';
+import Discover from './Discover';
+import News from './News';
 
 export default class TabBar extends Component {
     static defaultProps = {
