@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import News from './News';
+import { doHandleRequestNews } from './News';
 
 export default combineReducers({
-    News
+    doHandleRequestNews
 })

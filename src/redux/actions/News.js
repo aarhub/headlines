@@ -1,33 +1,26 @@
-export const FETCH_NEWS_START = 'FETCH_NEWS_START';
-export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
-export const FETCH_NEWS_FAIL = 'FETCH_NEWS_FAIL';
+export const DO_REQUET_NEWS = 'DO_REQUEST_NEWS';
+export const DONE_REQUEST_NEWS = 'DONW_REQUEST_NEWS';
 
-function fetchNewsStart() {
+function doRequestNewsAction(params) {
     return {
-        type: FETCH_NEWS_START
+        type: DO_REQUET_NEWS,
+        params
     }
 }
 
-function fetchNewsSuccess(data) {
+function doneRequestNewsAction(data) {
     return {
-        type: FETCH_NEWS_SUCCESS,
+        type: DONE_REQUEST_NEWS,
         data
     }
 }
 
-function fetchNewsFail(msg) {
-    return {
-        type: FETCH_NEWS_FAIL,
-        msg
-    }
-}
+//import { doRequestBBCNews } from '../api/news'
 
-export function fetchNews(url) {
+export async function doFetchNews() {
     return dispatch => {
-        dispatch(fetchNewsStart());
-
-        fetch(url).then(response => {
-            return response.json();
-        }).then(data => dispatch(fetchNewsSuccess(data))).catch(err => dispatch(fetchNewsFail(err)));
+        dispatch(doRequestNewsAction());
+        //const result = await doRequestBBCNews();
+        //dispatch(doneRequestNewsAction(result));
     }
 }
