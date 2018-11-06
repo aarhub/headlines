@@ -1,4 +1,4 @@
-# headlines
+# Headlines
 
 A news app base on News API
 
