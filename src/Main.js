@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import TabBar from './components/TabBar';
-import Detail from './components/pages/Detail';
-import configureStore from './redux/store';
 import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
+import TabBar from './pages/TabBar';
+import Detail from './pages/Detail';
+import configureStore from './redux/store';
 
 const store = configureStore();
 const screens = StackNavigator({
