@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Button, Image, Switch } from 'react-native';
 
-import { getWidth } from '../../utils/px2dp';
+import { getWidth } from '../utils/px2dp';
+
+const test = 'test';
 
 export default class My extends Component {
     render() {

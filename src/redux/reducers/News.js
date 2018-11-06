@@ -1,27 +1,22 @@
-import { FETCH_NEWS_START, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAIL } from '../actions/News';
+import { DO_REQUET_NEWS, DONE_REQUEST_NEWS } from '../actions/News';
 
 const initalState = {
     isFetching: false,
     data: null
 }
 
-export default function fetchNews(state = initalState, action) {
+export function doHandleRequestNews(state = initalState, action) {
     state = state || {};
 
     switch (action.type) {
-        case FETCH_NEWS_START:
+        case DO_REQUET_NEWS:
             return Object.assign({}, state, {
                 isFetching: true,
             })
-        case FETCH_NEWS_SUCCESS:
+        case DONE_REQUEST_NEWS:
             return Object.assign({}, state, {
                 isFetching: false,
                 data: action.data
-            })
-        case FETCH_NEWS_FAIL:
-            return Object.assign({}, state, {
-                isFetching: false,
-                msg: action.msg
             })
         default:
             return state

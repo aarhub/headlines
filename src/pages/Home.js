@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ListView, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { fetchNews } from '../../redux/actions/News';
-import { API_BBC_NEWS } from '../../config/Constants'
+// import { fetchNews } from './redux/actions/News';
 
 class Home extends Component {
     renderRow = (item) => {
@@ -58,7 +57,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchNews(API_BBC_NEWS));
+        //this.props.fetchNews();
     }
 }
 
