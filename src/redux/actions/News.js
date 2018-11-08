@@ -1,3 +1,5 @@
+import { API_BBC_NEWS } from '../api/Constants';
+
 export const DO_REQUET_NEWS = 'DO_REQUEST_NEWS';
 export const DONE_REQUEST_NEWS = 'DONW_REQUEST_NEWS';
 
@@ -8,19 +10,25 @@ function doRequestNewsAction(params) {
     }
 }
 
-function doneRequestNewsAction(data) {
+function doneRequestNewsAction(result) {
     return {
         type: DONE_REQUEST_NEWS,
-        data
+        result
     }
 }
 
-//import { doRequestBBCNews } from '../api/news'
-
-export async function doFetchNews() {
+export function doFetchNews() {
     return dispatch => {
         dispatch(doRequestNewsAction());
-        //const result = await doRequestBBCNews();
-        //dispatch(doneRequestNewsAction(result));
+
+        fetch(API_BBC_NEWS).then(response => {
+            if (response && response.ok) {
+                const result = response.json();
+                dispatch(doneRequestNewsAction(result));
+            }
+        }).catch(err => {
+            dispatch(doneRequestNewsAction(err));
+        });
     }
 }
+

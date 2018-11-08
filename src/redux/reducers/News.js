@@ -2,7 +2,7 @@ import { DO_REQUET_NEWS, DONE_REQUEST_NEWS } from '../actions/News';
 
 const initalState = {
     isFetching: false,
-    data: null
+    result: null
 }
 
 export function doHandleRequestNews(state = initalState, action) {
@@ -16,7 +16,7 @@ export function doHandleRequestNews(state = initalState, action) {
         case DONE_REQUEST_NEWS:
             return Object.assign({}, state, {
                 isFetching: false,
-                data: action.data
+                result: action.result
             })
         default:
             return state

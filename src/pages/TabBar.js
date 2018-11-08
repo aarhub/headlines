@@ -8,7 +8,6 @@ import { px2dp } from '../utils/px2dp';
 import Home from './Home';
 import My from './My';
 import Discover from './Discover';
-import News from './News';
 
 export default class TabBar extends Component {
     static defaultProps = {
@@ -20,8 +19,8 @@ export default class TabBar extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'my',
-            tabName: ['Home', 'Discover', 'News', 'My']
+            selectedTab: 'home',
+            tabName: ['Home', 'Discover', 'My']
         }
     }
 
@@ -61,7 +60,7 @@ export default class TabBar extends Component {
                         //this.props.navigator.navigate('Detail', { detail: item });
                     }} />}
                 </TabNavigator.Item>
-                {/* <TabNavigator.Item
+                <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[1]}
                     selected={this.state.selectedTab === 'compass'}
@@ -70,16 +69,6 @@ export default class TabBar extends Component {
                     renderSelectedIcon={() => <Image style={styles.tab} source={this.state.compassSelected} />}
                     onPress={() => this.setState({ selectedTab: 'compass' })}>
                     {<Discover />}
-                </TabNavigator.Item> */}
-                <TabNavigator.Item
-                    tabStyle={styles.tabStyle}
-                    title={tabName[2]}
-                    selected={this.state.selectedTab === 'news'}
-                    selectedTitleStyle={{ color: selectedColor }}
-                    renderIcon={() => <Image style={styles.tab} source={this.state.notificationNormal} />}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={this.state.notificationSelected} />}
-                    onPress={() => this.setState({ selectedTab: 'news' })}>
-                    {<News navigator={this.props.navigator} />}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}

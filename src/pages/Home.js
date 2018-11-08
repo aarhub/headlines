@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ListView, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ListView, Image, TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-// import { fetchNews } from './redux/actions/News';
+import { doFetchNews } from '../redux/actions/News';
 
 class Home extends Component {
     renderRow = (item) => {
+        console.log(item.title);
         return (
             <TouchableOpacity onPress={() => this.goDetail(item)}>
                 <View style={styles.item}>
@@ -27,14 +28,20 @@ class Home extends Component {
         )
     }
 
-    renderList(data) {
-        var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
+    renderList() {
+        const { isFetching, result } = this.props;
+        if (isFetching) {
+            return <Text>loading data...</Text>
+        }
 
         return (
-            <ListView
-                dataSource={ds.cloneWithRows(data)}
-                renderRow={(item) => { return this.renderRow(item); }}>
-            </ListView>
+            <FlatList
+                dataSource={result}
+                renderItem={(item) => {
+                    console.log(item);
+                    return this.renderRow(item);
+                }}>
+            </FlatList>
         )
     }
 
@@ -43,35 +50,28 @@ class Home extends Component {
     }
 
     render() {
-        const { isFetching, data } = this.props;
-
-        if (data !== null) {
-            let d = data;
-        }
-
         return (
             <View style={styles.container}>
-                <Text>{`Home Page`}</Text>
+                {this.renderList()}
             </View>
         )
     }
 
     componentDidMount() {
-        //this.props.fetchNews();
+        this.props.doFetchNews();
     }
 }
 
 function mapStateToProps(state) {
     const newState = {
-        isFetching: state.News.isFetching,
-        data: state.News.data,
-        msg: state.News.msg || null
+        isFetching: state.doHandleRequestNews.isFetching,
+        result: state.doHandleRequestNews.result,
     };
 
     return newState;
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, { doFetchNews })(Home);
 
 const styles = StyleSheet.create({
     container: {
