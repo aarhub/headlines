@@ -53,3 +53,4 @@ buck-out/
 */fastlane/screenshots
 .vscode
 android/.project
+ios/Index
