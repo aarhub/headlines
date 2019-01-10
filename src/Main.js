@@ -23,6 +23,7 @@ export default class Main extends Component {
                 <View style={styles.container}>
                     {/* <TabBar navigator={screens}></TabBar> */}
                     <Text>Test</Text>
+                    <Text>Shit APP Shit</Text>
                 </View>
             // </Provider>
         )
