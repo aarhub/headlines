@@ -54,3 +54,4 @@ buck-out/
 .vscode
 ios/._build
 ios/._headlines.xcodeproj
+package-lock.json
