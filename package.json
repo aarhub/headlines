@@ -8,8 +8,15 @@
 		"test": "jest"
 	},
 	"dependencies": {
+<<<<<<< HEAD
 		"@babel/runtime": "^7.2.0",
 		"react": "^16.0.0",
+=======
+		"appcenter": "1.11.0",
+		"appcenter-analytics": "1.11.0",
+		"appcenter-crashes": "1.11.0",
+		"react": "^16.2.0",
+>>>>>>> dev
 		"react-native": "^0.51.1",
 		"react-native-tab-navigator": "^0.3.4",
 		"react-native-vector-icons": "^4.5.0",

@@ -52,5 +52,11 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 .vscode
+<<<<<<< HEAD
 android/.project
 ios/Index
+=======
+ios/._build
+ios/._headlines.xcodeproj
+package-lock.json
+>>>>>>> dev
