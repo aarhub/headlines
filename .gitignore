@@ -52,3 +52,5 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 .vscode
+ios/._build
+ios/._headlines.xcodeproj
