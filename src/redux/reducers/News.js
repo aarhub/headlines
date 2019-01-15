@@ -1,13 +1,6 @@
 import { DO_REQUET_NEWS, DONE_REQUEST_NEWS } from '../actions/News';
 
-const initalState = {
-    isFetching: false,
-    result: null
-}
-
-export function doHandleRequestNews(state = initalState, action) {
-    state = state || {};
-
+export function doHandleRequestNews(state = { isFetching: false, result: null }, action) {
     switch (action.type) {
         case DO_REQUET_NEWS:
             return Object.assign({}, state, {

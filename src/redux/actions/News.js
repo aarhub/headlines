@@ -17,15 +17,16 @@ function doneRequestNewsAction(result) {
     }
 }
 
-export function doFetchNews() { console.log('fetch news....')
+export function doFetchNews() {
     return dispatch => {
         dispatch(doRequestNewsAction());
 
         fetch(API_BBC_NEWS).then(response => {
             if (response && response.ok) {
-                const result = response.json();
-                dispatch(doneRequestNewsAction(result));
+                return response.json();
             }
+        }).then(response => { console.log(response);
+            dispatch(doneRequestNewsAction(response));
         }).catch(err => {
             dispatch(doneRequestNewsAction(err));
         });

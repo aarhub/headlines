@@ -5,7 +5,6 @@ import { doFetchNews } from '../redux/actions/News';
 
 class Home extends Component {
     renderRow = (item) => {
-        console.log(item.title);
         return (
             <TouchableOpacity onPress={() => this.goDetail(item)}>
                 <View style={styles.item}>
@@ -29,14 +28,14 @@ class Home extends Component {
     }
 
     renderList() {
-        const { isFetching, result } = this.props;
+        const { isFetching, result } = this.props; console.log(isFetching);
         if (isFetching) {
             return <Text>loading data...</Text>
         }
 
         return (
             <FlatList
-                dataSource={result}
+                dataSource={result && result.articles}
                 renderItem={(item) => {
                     console.log(item);
                     return this.renderRow(item);
@@ -57,7 +56,7 @@ class Home extends Component {
         )
     }
 
-    componentDidMount() { console.log('test....')
+    componentDidMount() {
         this.props.doFetchNews();
     }
 }
