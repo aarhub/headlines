@@ -57,7 +57,7 @@ class Home extends Component {
         )
     }
 
-    componentDidMount() {
+    componentDidMount() { console.log('test....')
         this.props.doFetchNews();
     }
 }

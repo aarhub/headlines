@@ -17,7 +17,7 @@ function doneRequestNewsAction(result) {
     }
 }
 
-export function doFetchNews() {
+export function doFetchNews() { console.log('fetch news....')
     return dispatch => {
         dispatch(doRequestNewsAction());
 
