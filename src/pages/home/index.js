@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import { doFetchNews } from '../redux/actions/News';
+import { doFetchNews } from '../../redux/actions/News';
 
 class Home extends Component {
     componentDidMount() {
@@ -18,25 +18,26 @@ class Home extends Component {
 
     renderList() {
         const { isFetching, result } = this.props;
-        if (isFetching) {
+        if (isFetching || result === null) {
             return <Text>loading data...</Text>
         }
-
         return (
-            <FlatList
-                dataSource={result && result.articles}
-                renderItem={(item) => {
-                    console.log(item);
-                    return this.renderRow(item);
-                }}>
-            </FlatList>
+            <View style={{ flex: 1 }}>
+                <FlatList
+                    data={result && result.articles}
+                    renderItem={(item, index) => {
+                        return this.renderRow(item, index);
+                    }}>
+                </FlatList>
+            </View>
+
         )
     }
 
-    renderRow = (item) => {
+    renderRow = (item, index) => {
         return (
             <TouchableOpacity onPress={() => this.onGoDetail(item)}>
-                <View style={styles.item}>
+                <View style={styles.item} key={index} >
                     <View style={styles.sum}>
                         <Image style={styles.thumb} source={{ uri: item.urlToImage }} />
                         <View style={styles.title}>
@@ -75,8 +76,10 @@ export default connect(mapStateToProps, { doFetchNews })(Home);
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'silver',
-        flexDirection: 'column',
-        alignItems: 'center'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
     },
     empty: {
         flex: 1,

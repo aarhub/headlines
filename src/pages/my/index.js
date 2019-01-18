@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button, Image, Switch } from 'react-native';
+import { View, StyleSheet, Text, Image, Switch } from 'react-native';
 
-import { getWidth } from '../utils/px2dp';
-
-const test = 'test';
+//import { getWidth } from '../../utils/px2dp';
 
 export default class My extends Component {
     render() {
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
     },
     profile: {
         width: '100%',
-        height: getWidth() / 2,
+        //height: getWidth() / 2,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
     thumb: {
         width: 80,
         height: 80,
-        marginTop: getWidth() / 4,
+        //marginTop: getWidth() / 4,
         borderRadius: 50,
         borderWidth: 3,
         borderColor: '#FFFFFF'
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
     title: {
     },
     settings: {
-        width: getWidth() - 40,
+        //width: getWidth() - 40,
         marginLeft: 20,
         marginRight: 20,
         marginTop: -20,

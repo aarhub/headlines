@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
 import configureStore from './redux/store';
 import TabBar from './pages/TabBar';
-import Detail from './pages/Detail';
+import Detail from './pages/detail';
 
 const store = configureStore();
 const screens = StackNavigator({

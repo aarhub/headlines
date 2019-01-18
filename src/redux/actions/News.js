@@ -29,7 +29,7 @@ export function doFetchNews() {
             if (response && response.ok) {
                 return response.json();
             }
-        }).then(response => { console.log(response);
+        }).then(response => {
             dispatch(doneRequestNewsAction(response));
         }).catch(err => {
             dispatch(doneRequestNewsAction(err));

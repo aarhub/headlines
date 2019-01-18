@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -7,7 +7,7 @@ import { px2dp } from '../utils/px2dp';
 
 import Home from './home';
 import My from './my';
-import Discover from './Discover';
+import Discover from './discover';
 
 export default class TabBar extends Component {
     static defaultProps = {
