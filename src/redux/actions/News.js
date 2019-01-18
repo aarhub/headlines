@@ -1,7 +1,11 @@
-import { API_BBC_NEWS } from '../api/Constants';
+import config from '../../../config';
 
 export const DO_REQUET_NEWS = 'DO_REQUEST_NEWS';
 export const DONE_REQUEST_NEWS = 'DONW_REQUEST_NEWS';
+
+export const API_BBC_NEWS = `https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${config.api_key}`;
+export const API_ABC_NEWS_AU = `https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=${config.api_key}`;
+export const HACKER_NEWS = `https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=${config.api_key}`;
 
 function doRequestNewsAction(params) {
     return {

@@ -1,12 +1,41 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ListView, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { doFetchNews } from '../redux/actions/News';
 
 class Home extends Component {
+    componentDidMount() {
+        this.props.doFetchNews();
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                {this.renderList()}
+            </View>
+        )
+    }
+
+    renderList() {
+        const { isFetching, result } = this.props;
+        if (isFetching) {
+            return <Text>loading data...</Text>
+        }
+
+        return (
+            <FlatList
+                dataSource={result && result.articles}
+                renderItem={(item) => {
+                    console.log(item);
+                    return this.renderRow(item);
+                }}>
+            </FlatList>
+        )
+    }
+
     renderRow = (item) => {
         return (
-            <TouchableOpacity onPress={() => this.goDetail(item)}>
+            <TouchableOpacity onPress={() => this.onGoDetail(item)}>
                 <View style={styles.item}>
                     <View style={styles.sum}>
                         <Image style={styles.thumb} source={{ uri: item.urlToImage }} />
@@ -27,37 +56,8 @@ class Home extends Component {
         )
     }
 
-    renderList() {
-        const { isFetching, result } = this.props; console.log(isFetching);
-        if (isFetching) {
-            return <Text>loading data...</Text>
-        }
-
-        return (
-            <FlatList
-                dataSource={result && result.articles}
-                renderItem={(item) => {
-                    console.log(item);
-                    return this.renderRow(item);
-                }}>
-            </FlatList>
-        )
-    }
-
-    goDetail(item) {
+    onGoDetail(item) {
         this.props.onShowDetail(item);
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                {this.renderList()}
-            </View>
-        )
-    }
-
-    componentDidMount() {
-        this.props.doFetchNews();
     }
 }
 

@@ -7,7 +7,7 @@ export default class headlines extends Component {
   render() {
     return (
       <Main style={styles.welcome}></Main>
-    );
+    )
   }
 }
 

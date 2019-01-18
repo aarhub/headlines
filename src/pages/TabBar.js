@@ -5,8 +5,8 @@ import TabNavigator from 'react-native-tab-navigator';
 
 import { px2dp } from '../utils/px2dp';
 
-import Home from './Home';
-import My from './My';
+import Home from './home';
+import My from './my';
 import Discover from './Discover';
 
 export default class TabBar extends Component {
