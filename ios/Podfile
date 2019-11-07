@@ -1,11 +1,17 @@
+<<<<<<< HEAD
 # Uncomment the next line to define a global platform for your project
+=======
+>>>>>>> dev-new
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'headlines' do
+<<<<<<< HEAD
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
+=======
+>>>>>>> dev-new
   # Pods for headlines
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
@@ -44,6 +50,7 @@ target 'headlines' do
   end
 
   use_native_modules!
+<<<<<<< HEAD
 
 end
 
@@ -51,6 +58,11 @@ target 'headlines-tvOS' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
+=======
+end
+
+target 'headlines-tvOS' do
+>>>>>>> dev-new
   # Pods for headlines-tvOS
 
   target 'headlines-tvOSTests' do
