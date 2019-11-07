@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
-import configureStore from './redux/store';
 import TabBar from './pages/TabBar';
 import Detail from './pages/detail';
 
-const store = configureStore();
 const screens = StackNavigator({
     Bars: { screen: TabBar },
     Detail: { screen: Detail }
@@ -19,11 +16,9 @@ export default class Main extends Component {
 
     render() {
         return (
-            <Provider store={store}>
-                <View style={styles.container}>
-                    <TabBar navigator={screens}></TabBar>
-                </View>
-            </Provider>
+            <View style={styles.container}>
+                <TabBar navigator={screens}></TabBar>
+            </View>
         )
     }
 }
