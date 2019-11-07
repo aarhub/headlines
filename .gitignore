@@ -51,7 +51,6 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-<<<<<<< HEAD
 
 .vscode
 android/.project
@@ -65,11 +64,4 @@ android/.settings
 *.jsbundle
 __tests__
 ios/Pods
-=======
-
-# Bundle artifact
-*.jsbundle
-
-# CocoaPods
-/ios/Pods/
->>>>>>> dev-new
+ios/build
