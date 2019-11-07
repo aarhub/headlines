@@ -1,6 +1,6 @@
 {
 	"name": "headlines",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"private": true,
 	"author": "fachilles",
 	"scripts": {
@@ -8,20 +8,13 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"@babel/runtime": "^7.2.0",
-		"appcenter": "1.11.0",
-		"appcenter-analytics": "1.11.0",
-		"appcenter-crashes": "1.11.0",
-		"react": "16.6.3",
-		"react-native": "0.57.8",
-		"react-native-tab-navigator": "^0.3.4",
-		"react-native-vector-icons": "^4.5.0",
-		"react-navigation": "^1.2.1",
-		"react-redux": "^5.0.7",
-		"redux": "^3.7.2",
-		"redux-thunk": "^2.2.0"
+		"@ant-design/icons-react-native": "1.0.2",
+		"@ant-design/react-native": "^3.2.0",
+		"react": "16.8.0",
+		"react-native": "0.61.2"
 	},
 	"devDependencies": {
+		"@babel/runtime": "^7.2.0",
 		"babel-jest": "20.0.3",
 		"babel-preset-react-native": "3.0.2",
 		"jest": "20.0.4",
