@@ -1,31 +1,4 @@
 {
-<<<<<<< HEAD
-	"name": "headlines",
-	"version": "1.0.1",
-	"private": true,
-	"author": "fachilles",
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-		"@ant-design/icons-react-native": "1.0.2",
-		"@ant-design/react-native": "^3.2.0",
-		"react": "16.8.0",
-		"react-native": "0.61.2"
-	},
-	"devDependencies": {
-		"@babel/runtime": "^7.2.0",
-		"babel-jest": "20.0.3",
-		"babel-preset-react-native": "3.0.2",
-		"jest": "20.0.4",
-		"react-test-renderer": "16.0.0"
-	},
-	"jest": {
-		"preset": "react-native"
-	}
-}
-=======
   "name": "headlines",
   "version": "0.0.1",
   "private": true,
@@ -55,4 +28,3 @@
     "preset": "react-native"
   }
 }
->>>>>>> dev-new
